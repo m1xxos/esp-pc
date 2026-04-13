@@ -1,0 +1,4 @@
+# Matter profile defaults (base placeholders)
+CONFIG_BT_ENABLED=y
+CONFIG_BT_BLE_ENABLED=y
+CONFIG_ESP_PHY_ENABLE_USB=y

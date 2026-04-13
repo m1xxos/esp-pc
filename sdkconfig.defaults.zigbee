@@ -1,0 +1,3 @@
+# Zigbee profile defaults (base placeholders)
+CONFIG_ESP_PHY_ENABLE_USB=y
+CONFIG_ESP_COREDUMP_ENABLE_TO_FLASH=n

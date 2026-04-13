@@ -1,0 +1,39 @@
+flowchart LR
+    subgraph XIAO["XIAO ESP32C6 Module"]
+        PWRGPIO["GPIO1 PWR_CMD"]
+        RSTGPIO["GPIO2 RST_CMD"]
+        SENSEGPIO["GPIO0 PWR_LED_SENSE"]
+        X5V["USB 5V"]
+        XGND["USB GND"]
+    end
+
+    subgraph ISO["Optocoupler Board"]
+        U1["U1 -> PWR_SW"]
+        U2["U2 -> RESET_SW"]
+        U3["U3 <- PWR_LED"]
+    end
+
+    subgraph MB["Motherboard Front Panel Header"]
+        MBPWR["PWR_SW pins"]
+        MBRST["RESET_SW pins"]
+        MBLED["PWR_LED+ / PWR_LED-"]
+    end
+
+    subgraph CASE["Case Buttons"]
+        BPWR["Case Power Button"]
+        BRST["Case Reset Button"]
+    end
+
+    PWRGPIO --> U1
+    RSTGPIO --> U2
+    U3 --> SENSEGPIO
+
+    U1 --> MBPWR
+    U2 --> MBRST
+    MBLED --> U3
+
+    BPWR --> MBPWR
+    BRST --> MBRST
+
+    X5V --- XIAO
+    XGND --- XIAO

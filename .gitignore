@@ -1,0 +1,15 @@
+# ESP-IDF
+build/
+sdkconfig
+sdkconfig.old
+managed_components/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+out/
+matter_payload.txt
+
+# OS
+.DS_Store

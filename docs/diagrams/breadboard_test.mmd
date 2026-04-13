@@ -1,0 +1,30 @@
+flowchart LR
+    subgraph XIAO["XIAO ESP32C6"]
+        D1["GPIO1 / D1 PWR_CMD"]
+        D2["GPIO2 / D2 RST_CMD"]
+        D0["GPIO0 / D0 PWR_STATE"]
+        GND1["GND"]
+    end
+
+    subgraph ISO["Isolators"]
+        U1["U1 Optocoupler PWR_SW"]
+        U2["U2 Optocoupler RESET_SW"]
+        U3["U3 Optocoupler PWR_LED sense"]
+    end
+
+    subgraph MOCK["Breadboard Mock Motherboard"]
+        PWR["PWR_SW pull-up + test node"]
+        RST["RESET_SW pull-up + test node"]
+        LED["PWR_LED source"]
+        MGND["Mock GND"]
+    end
+
+    D1 -->|220R| U1
+    D2 -->|220R| U2
+    U3 --> D0
+    GND1 --- XIAO
+
+    U1 --> PWR
+    U2 --> RST
+    LED --> U3
+    MGND --- MOCK
