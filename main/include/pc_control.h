@@ -2,6 +2,10 @@
 
 #include "esp_err.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef enum {
     PC_POWER_UNKNOWN = 0,
     PC_POWER_OFF,
@@ -24,3 +28,7 @@ esp_err_t pc_control_execute(pc_command_t command);
 const char *pc_control_state_to_str(pc_power_state_t state);
 
 const char *pc_control_command_to_str(pc_command_t command);
+
+#ifdef __cplusplus
+}
+#endif
